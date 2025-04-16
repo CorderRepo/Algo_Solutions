@@ -16,6 +16,9 @@ public:
 
         for (char n : t) {
             mapOfS[n] = mapOfS[n] - 1;
+            if (mapOfS[n] == 0) {
+                mapOfS.erase(n);
+            }
         }
 
         for (const auto &pair : mapOfS) {
