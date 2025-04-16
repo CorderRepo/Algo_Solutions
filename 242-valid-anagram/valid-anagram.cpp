@@ -9,18 +9,17 @@ public:
         }
 
         std::unordered_map<char, int> mapOfS;
-        std::unordered_map<char, int> mapOfT;
 
         for (char n : s) {
             mapOfS[n] = mapOfS[n] + 1;
         }
 
         for (char n : t) {
-            mapOfT[n] = mapOfT[n] + 1;
+            mapOfS[n] = mapOfS[n] - 1;
         }
 
         for (const auto &pair : mapOfS) {
-            if (pair.second != mapOfT[pair.first]) {
+            if (pair.second != 0) {
                 return false;
             }
         }
