@@ -27,8 +27,6 @@ public:
             }
         }
 
-        mapOfS.clear();
-
         return true;
     }
 };
