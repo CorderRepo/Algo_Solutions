@@ -21,8 +21,10 @@ public:
             }
         }
 
-        if (mapOfS.size() != 0) {
-            return false;
+        for (const auto &pair : mapOfS) {
+            if (pair.second != 0) {
+                return false;
+            }
         }
 
         return true;
