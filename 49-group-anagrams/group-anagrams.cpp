@@ -14,7 +14,7 @@ public:
 
         vector<vector<string>> solution;
 
-        for (const auto & [_,as] : mapChecker) {
+        for (auto & [_,as] : mapChecker) {
             solution.emplace_back(move(as));
         }
 
