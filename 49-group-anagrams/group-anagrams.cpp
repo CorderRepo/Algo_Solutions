@@ -7,15 +7,15 @@ public:
         unordered_map<string, vector<string>> mapChecker;
 
         for (auto & str : strs) {
-            string a = str;
-            sort(str.begin(), str.end());
-            mapChecker[str].emplace_back(move(a));
+            string temp = str;
+            sort(str.begin(),str.end());
+            mapChecker[str].emplace_back(move(temp));
         }
 
-        vector<vector<string>> solution;
+        vector<vector<string>> solution = {};
 
-        for (auto & [_,as] : mapChecker) {
-            solution.emplace_back(move(as));
+        for (auto & [_,sub] : mapChecker) {
+            solution.emplace_back(move(sub));
         }
 
         return solution;
