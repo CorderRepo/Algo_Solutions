@@ -3,30 +3,24 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
+        std::unordered_map<char, int> log;
 
-        if (s.size() != t.size()) {
-            return false;
+        for (auto const &i : s) {
+            log[i]++;
         }
 
-        std::unordered_map<char, int> mapOfS;
+        for (auto const &i : t) {
+            log[i]--;
 
-        for (char n : s) {
-            mapOfS[n] = mapOfS[n] + 1;
-        }
-
-        for (char n : t) {
-            mapOfS[n] = mapOfS[n] - 1;
-            if (mapOfS[n] == 0) {
-                mapOfS.erase(n);
+            if (log[i] == 0) {
+                log.erase(i);
             }
         }
 
-        for (const auto &pair : mapOfS) {
-            if (pair.second != 0) {
-                return false;
-            }
+        if (log.size() == 0) {
+            return true;
         }
 
-        return true;
+        return false;
     }
 };
