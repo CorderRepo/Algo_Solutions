@@ -3,16 +3,15 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        std::unordered_map<int, int> map;
+        // <Desired Number, Index>
+        std::unordered_map<int, int> log;
 
         for (int i = 0; i < nums.size(); i++) {
-            if (map[target - nums[i]] >= 0) {
-                if ((nums[i] + nums[map[target - nums[i]]] == target) && i != 0) {
-                    return {map[target - nums[i]], i};
-                } else {
-                    map[nums[i]] = i;
-                }
+            if (nums[log[nums[i]]] + nums[i] == target && i != 0) {
+                return {i, log[nums[i]]};
             }
+
+            log[target - nums[i]] = i;
         }
 
         return {};
