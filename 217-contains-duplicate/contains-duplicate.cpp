@@ -3,14 +3,14 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        std::unordered_map<int, int> dict;
+        std::unordered_map<int, int> log;
 
-        for (int i: nums) {
-            if (dict[i] == 0) {
-                dict[i] = 1;
-            } else {
+        for (int i = 0; i < nums.size(); i++) {
+            if (log[nums[i]] + 1 > 1) {
                 return true;
-            }
+            } else {
+                log[nums[i]]++;
+            }       
         }
 
         return false;
