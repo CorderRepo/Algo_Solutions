@@ -6,7 +6,7 @@ public:
     bool containsDuplicate(vector<int>& nums) {
         std::unordered_map<int, int> log;
 
-        for (const auto i : nums) {
+        for (const auto &i : nums) {
             log[i]++;
 
             if (log[i] > 1) {
