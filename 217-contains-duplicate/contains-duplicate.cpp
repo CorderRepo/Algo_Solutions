@@ -1,19 +1,19 @@
-#include <unordered_set>
+#include <unordered_map>
+#include <vector>
 
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        std::unordered_set<int> log;
-        int n = nums.size();
+        std::unordered_map<int, int> log;
 
-        for (int i = 0; i < n; i++) {
-            log.insert(nums[i]);
+        for (const auto i : nums) {
+            log[i]++;
+
+            if (log[i] > 1) {
+                return true;
+            }
         }
 
-        if (n == log.size()) {
-            return false;
-        } 
-
-        return true;
+        return false;
     }
 };
