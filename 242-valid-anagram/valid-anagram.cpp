@@ -1,26 +1,25 @@
-#include <unordered_map>
-
 class Solution {
 public:
     bool isAnagram(string s, string t) {
         std::unordered_map<char, int> log;
 
-        for (auto const &i : s) {
-            log[i]++;
-        }
+        if (s.size() == t.size()) {
+            for (int i = 0; i < s.size(); ++i) {
+                log[s.at(i)]++;
+                log[t.at(i)]--;
 
-        for (auto const &i : t) {
-            log[i]--;
-
-            if (log[i] == 0) {
-                log.erase(i);
+                if (log[s.at(i)] == 0) {
+                    log.erase(s.at(i));
+                } 
+                
+                if (log[t.at(i)] == 0) {
+                    log.erase(t.at(i));
+                }
             }
-        }
 
-        if (log.size() == 0) {
-            return true;
+            return log.empty();
+        } else {
+            return false;
         }
-
-        return false;
     }
 };
