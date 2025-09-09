@@ -1,17 +1,14 @@
-#include <unordered_map>
-
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        // <Desired Number, Index>
         std::unordered_map<int, int> log;
 
-        for (int i = 0; i < nums.size(); i++) {
-            if (nums[log[nums[i]]] + nums[i] == target && i != 0) {
+        for (int i = 0; i < nums.size(); ++i) {
+            if (nums[i] + nums[log[nums[i]]] == target && i != log[nums[i]]) {
                 return {i, log[nums[i]]};
+            } else {
+                log[target - nums[i]] = i;
             }
-
-            log[target - nums[i]] = i;
         }
 
         return {};
