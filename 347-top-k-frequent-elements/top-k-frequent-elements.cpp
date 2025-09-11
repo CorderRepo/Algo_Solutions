@@ -7,21 +7,19 @@ public:
             ++log[i];
         }
 
-        std::vector<std::pair<int, int>> temp;
+        std::priority_queue<pair<int, int>> heap;
 
-        for (auto &[f,s] : log) {
-            temp.push_back({s, f});
+        for (auto &[k, v] : log) {
+            heap.push({v, k});
         }
-
-        std::sort(temp.rbegin(), temp.rend());
 
         std::vector<int> solution;
 
         for (int i = 0; i < k; ++i) {
-            solution.push_back(temp[i].second);
+            solution.push_back((heap.top()).second);
+            heap.pop();
         }
 
         return solution;
-
     }
 };
